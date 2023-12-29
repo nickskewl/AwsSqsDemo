@@ -1,5 +1,7 @@
-Queue Demo (AWS SQS):  
-To implement the queue using AWS SQS, we need to do below 5 steps:
+To learn about Streaming systems and Redis PubSub implementation, check repo: https://github.com/nickskewl/RedisPubSubDemo
+
+**Queue Demo (AWS SQS):**  
+To implement the queue using AWS SQS and perform operations on it, we need to do below 5 steps:
 1. Create a free tier account on AWS - 'https://console.aws.amazon.com'.
 2. Install AWS cli and configure credentials
    - Install AWS cli: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
@@ -22,7 +24,7 @@ To implement the queue using AWS SQS, we need to do below 5 steps:
         }
     }
    ```
-4. publish a message in queue
+4. Publish a message in queue
     ```
    public void publishMessage(String queueName, MessageBody messageBody) {
         String queueUrl = sqsClient.getQueueUrl(queueName).getQueueUrl();
@@ -34,7 +36,7 @@ To implement the queue using AWS SQS, we need to do below 5 steps:
         sqsClient.sendMessage(sendMessageRequest);
     }
    ```
-5. consume the message from queue
+5. Read the message from queue
     ```
     public List<Message> getMessage(String queueName) {
         String queueUrl = sqsClient.getQueueUrl(queueName).getQueueUrl();
@@ -50,7 +52,7 @@ To implement the queue using AWS SQS, we need to do below 5 steps:
     }
    ```
 
-To write above code pieces all together, create a spring boot project using https://start.spring.io/ with below configuration:
+**To write above code pieces all together**, create a spring boot project using https://start.spring.io/ with below configuration:
 
 - Maven Project
 - Jar packaging
@@ -157,8 +159,8 @@ Import this project in intellij and create below 3 files:
     
 4. Run the Spring boot application and make the API calls to create a queue, to publish the message and consume it.
 
-References:  
-1. https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-message-queues.html  
-2. https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-messages.html
-     
-
+**References:**  
+1. https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-architecture.html
+2. https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/creating-sqs-standard-queues.html
+3. https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-message-queues.html  
+4. https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-messages.html
